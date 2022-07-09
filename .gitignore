@@ -4,7 +4,7 @@ HELP.md
 google-services.json
 build/
 app/release/
-.DS-Store
+.DS_Store
 
 ### STS ###
 .apt_generated

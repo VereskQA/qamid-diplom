@@ -1,5 +1,13 @@
 package ru.iteco.fmhandroid.ui;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+
 import android.os.SystemClock;
 
 import androidx.test.rule.ActivityTestRule;
@@ -11,6 +19,7 @@ import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.steps.AuthorizationSteps;
 
 @RunWith(AllureAndroidJUnit4.class)
@@ -31,7 +40,10 @@ public class AuthorizationPage {
     public void signInEmpty() {
         AuthorizationSteps.isAuthorizationScreen();
         AuthorizationSteps.clickSignInButton();
-        AuthorizationSteps.isAuthorizationScreen();
+        onView(withText(R.string.empty_login_or_password))
+                .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
+                        .getDecorView())))).check(matches(withText("")));
+
     }
 
     @Test
@@ -41,7 +53,10 @@ public class AuthorizationPage {
         AuthorizationSteps.enterLogin("login");
         AuthorizationSteps.enterPassword("pass");
         AuthorizationSteps.clickSignInButton();
-        AuthorizationSteps.isAuthorizationScreen();
+        onView(withText(R.string.wrong_login_or_password))
+                .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
+                        .getDecorView())))).check(matches(withText("Wrong login or password")));
+
     }
 
     @Test

@@ -32,7 +32,7 @@ public class AuthorizationPage {
 
     @Before
     public void loaderWait() {
-        SystemClock.sleep(7000);
+        SystemClock.sleep(6000);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class AuthorizationPage {
         AuthorizationSteps.clickSignInButton();
         onView(withText(R.string.empty_login_or_password))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
-                        .getDecorView())))).check(matches(withText("")));
+                        .getDecorView())))).check(matches(withText("Login and password cannot be empty")));
 
     }
 

@@ -4,8 +4,8 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
-import static ru.iteco.fmhandroid.ui.helpers.Helpers.childAtPosition;
-import static ru.iteco.fmhandroid.ui.helpers.Helpers.withIndex;
+import static ru.iteco.fmhandroid.ui.helpers.MainHelper.childAtPosition;
+import static ru.iteco.fmhandroid.ui.helpers.MainHelper.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
 
@@ -15,8 +15,10 @@ public class MainScreen {
 
     public ViewInteraction allClaims = onView((withId(R.id.all_claims_text_view)));
     public ViewInteraction addNewClaimButton = onView((withId(R.id.add_new_claim_material_button)));
-    public ViewInteraction allNews = onView((withId(R.id.all_news_text_view)));
-    public ViewInteraction expandAllNews = onView(allOf(withId(R.id.expand_material_button),
+    public ViewInteraction allNewsLink = onView((withId(R.id.all_news_text_view)));
+
+    public ViewInteraction newsLabel = onView(childAtPosition(childAtPosition(withId(R.id.container_list_news_include_on_fragment_main), 0), 0));
+    public ViewInteraction expandNews = onView(allOf(withId(R.id.expand_material_button),
             childAtPosition(childAtPosition(withId(R.id.container_list_news_include_on_fragment_main), 0), 4)));
     public ViewInteraction expandSingleNews = onView(allOf(withId(R.id.news_list_recycler_view),
             childAtPosition(withId(R.id.all_news_cards_block_constraint_layout), 0)));

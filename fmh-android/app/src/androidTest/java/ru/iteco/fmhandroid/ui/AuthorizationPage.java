@@ -21,11 +21,15 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.steps.AuthorizationSteps;
+import ru.iteco.fmhandroid.ui.steps.MainSteps;
+import ru.iteco.fmhandroid.ui.steps.OverallSteps;
 
 @RunWith(AllureAndroidJUnit4.class)
 public class AuthorizationPage {
 
     AuthorizationSteps AuthorizationSteps = new AuthorizationSteps();
+    MainSteps MainSteps = new MainSteps();
+    OverallSteps OverallSteps = new OverallSteps();
 
     @Rule
     public ActivityTestRule<AppActivity> mActivityTestRule = new ActivityTestRule<>(AppActivity.class);
@@ -43,7 +47,6 @@ public class AuthorizationPage {
         onView(withText(R.string.empty_login_or_password))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
                         .getDecorView())))).check(matches(withText("Login and password cannot be empty")));
-
     }
 
     @Test
@@ -56,12 +59,17 @@ public class AuthorizationPage {
         onView(withText(R.string.wrong_login_or_password))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
                         .getDecorView())))).check(matches(withText("Wrong login or password")));
-
     }
 
     @Test
     @DisplayName("Успешный вход за пользователя и выход из приложения")
     public void signInSuccess() {
-
+        AuthorizationSteps.isAuthorizationScreen();
+        AuthorizationSteps.enterLogin("login2");
+        AuthorizationSteps.enterPassword("password2");
+        AuthorizationSteps.clickSignInButton();
+        SystemClock.sleep(2500);
+        MainSteps.isMainScreen();
+        OverallSteps.logout();
     }
 }

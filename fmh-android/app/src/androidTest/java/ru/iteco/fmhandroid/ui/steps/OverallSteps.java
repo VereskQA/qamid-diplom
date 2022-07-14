@@ -11,7 +11,7 @@ public class OverallSteps {
 
     @Step("Кликнуть выйти из приложения")
     public void logout() {
-        OverallElements.portaitImage.perform(click());
+        OverallElements.portraitImage.perform(click());
         OverallElements.logoutButton.perform(click());
     }
 }

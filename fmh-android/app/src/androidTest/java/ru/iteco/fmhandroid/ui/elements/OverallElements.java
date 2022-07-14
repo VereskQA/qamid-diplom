@@ -9,7 +9,7 @@ import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;
 
 public class OverallElements {
-    public ViewInteraction portaitImage = onView((withId(R.id.authorization_image_button)));
+    public ViewInteraction portraitImage = onView((withId(R.id.authorization_image_button)));
     public ViewInteraction logoutButton = onView((withText("Log out")));
 
 }

@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.not;
 
 import android.os.SystemClock;
 
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Before;
@@ -35,8 +36,13 @@ public class AuthorizationPage {
     public ActivityTestRule<AppActivity> mActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
-    public void loaderWait() {
+    public void logoutCheck() {
         SystemClock.sleep(6000);
+        try {
+            AuthorizationSteps.isAuthorizationScreen();
+        } catch (NoMatchingViewException e) {
+            OverallSteps.logout();
+        }
     }
 
     @Test

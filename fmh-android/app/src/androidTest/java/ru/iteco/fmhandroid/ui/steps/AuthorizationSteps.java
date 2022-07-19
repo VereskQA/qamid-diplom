@@ -11,6 +11,7 @@ import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.AuthorizationScreen;
 
 public class AuthorizationSteps {
+
     AuthorizationScreen AuthorizationScreen = new AuthorizationScreen();
 
     @Step("Проверка отображения экрана авторизации")
@@ -20,14 +21,14 @@ public class AuthorizationSteps {
 
     @Step("Ввод логина")
     public void enterLogin(String text) {
-        AuthorizationScreen.login.check(matches(isEnabled()));
-        AuthorizationScreen.login.perform(replaceText(text));
+        AuthorizationScreen.loginInput.check(matches(isEnabled()));
+        AuthorizationScreen.loginInput.perform(replaceText(text));
     }
 
     @Step("Ввод пароля")
     public void enterPassword(String text) {
-        AuthorizationScreen.password.check(matches(isEnabled()));
-        AuthorizationScreen.password.perform(replaceText(text));
+        AuthorizationScreen.passwordInput.check(matches(isEnabled()));
+        AuthorizationScreen.passwordInput.perform(replaceText(text));
     }
 
     @Step("Нажатие кнопки входа")

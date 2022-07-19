@@ -119,6 +119,34 @@ public class MainHelper {
         };
     }
 
+    public static class TextHelpers {
+        public static String getText(ViewInteraction matcher) {
+            final String[] text = new String[1];
+            ViewAction va = new ViewAction() {
+
+                @Override
+                public Matcher<View> getConstraints() {
+                    return isAssignableFrom(TextView.class);
+                }
+
+                @Override
+                public String getDescription() {
+                    return "Text of the view";
+                }
+
+                @Override
+                public void perform(UiController uiController, View view) {
+                    TextView tv = (TextView) view;
+                    text[0] = tv.getText().toString();
+                }
+            };
+
+            matcher.perform(va);
+
+            return text[0];
+        }
+    }
+
     private static View findFirstParentLayoutOfClass(View view) {
         ViewParent parent = new FrameLayout(view.getContext());
         ViewParent incrementView = null;
@@ -150,7 +178,7 @@ public class MainHelper {
         firstClaim.perform(click());
         ViewInteraction claimStatus = onView(
                 allOf(withId(R.id.status_label_text_view),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class)))));
+                        withParent(withParent(IsInstanceOf.instanceOf(androidx.cardview.widget.CardView.class)))));
         SystemClock.sleep(1000);
         claimStatus.check(matches(allOf(isDisplayed(), withText(status))));
         ViewInteraction backButton = onView(withId(R.id.close_image_button)).perform(nestedScrollTo());
@@ -163,9 +191,9 @@ public class MainHelper {
             return true;
         } catch (NoMatchingViewException ignored) {
         }
-        boolean invis = true;
+        boolean invisible = true;
         int n = 1;
-        while (invis) {
+        while (invisible) {
             try {
                 if (recycler == 1) {
                     onView(allOf(withId(R.id.news_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
@@ -177,12 +205,11 @@ public class MainHelper {
             }
             try {
                 locator.check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));//.check(matches(isDisplayed()));
-                invis = false;
-            } catch (NoMatchingViewException e) {
-                invis = true;
+                invisible = false;
+            } catch (NoMatchingViewException ignored) {
             }
             n++;
-            if (!invis & finishSwipe) {
+            if (!invisible & finishSwipe) {
                 try {
                     if (recycler == 1) {
                         onView(allOf(withId(R.id.news_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
@@ -198,59 +225,18 @@ public class MainHelper {
             }
             SystemClock.sleep(2000);
         }
-        ;
         return true;
     }
 
-    public static boolean fastDown(ViewInteraction locator, int recycler, boolean finishSwipe) {
-        try {
-            locator.check(matches(isDisplayed()));
-            return true;
-        } catch (NoMatchingViewException ignored) {
-        }
-        boolean invis = true;
-        int n = 1;
-        while (invis) {
-            try {
-                if (recycler == 1) {
-                    onView(allOf(withId(R.id.news_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
-                } else {
-                    onView(allOf(withId(R.id.claim_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
-                }
-            } catch (PerformException e) {
-                return false;
-            }
-            try {
-                locator.check(matches(isDisplayed()));
-                invis = false;
-            } catch (NoMatchingViewException e) {
-                invis = true;
-            }
-            n++;
-            if (!invis & finishSwipe) {
-                try {
-                    if (recycler == 1) {
-                        onView(allOf(withId(R.id.news_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
-                    } else {
-                        onView(allOf(withId(R.id.claim_list_recycler_view), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
-                    }
-                } catch (PerformException e) {
-                    return false;
-                }
-            }
-            if (n > 400) {
-                return false;
-            }
-            SystemClock.sleep(2000);
-        }
-        ;
-        return true;
-    }
+    public static String getTestCurrentDate() {
+        //Примечание проверяющему
+        //В связи с быстрорастущей базой заявок мною принято решение использовать хардкоженную,
+        //прошедшую дату для упрощения поиска тестовых заявок и новостей.
+        return "01.01.2021";
 
-    public static String getCurrentDate() {
-        Date currentDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-        return dateFormat.format(currentDate);
+        //Date currentDate = new Date();
+        //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        //return dateFormat.format(currentDate);
     }
 
     public static String getCurrentTime() {

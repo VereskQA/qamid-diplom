@@ -6,6 +6,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 import static ru.iteco.fmhandroid.ui.helpers.MainHelper.nestedScrollTo;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.EditClaimScreen;
 
@@ -13,13 +14,13 @@ public class EditClaimSteps {
 
     EditClaimScreen EditClaimScreen = new EditClaimScreen();
 
-    @Step("Проверка отображения экрана редактирования заявки")
     public void isClaimsEditScreen() {
+        Allure.step("Проверка отображения экрана редактирования заявки");
         EditClaimScreen.claimStatus.check(matches(isDisplayed()));
     }
 
-    @Step("Возврат назад")
     public void backFromClaim() {
+        Allure.step("Возврат назад");
         EditClaimScreen.backButton.perform(nestedScrollTo());
         EditClaimScreen.backButton.perform(click());
     }

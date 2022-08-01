@@ -8,6 +8,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.ControlPanelScreen;
 import ru.iteco.fmhandroid.ui.elements.NewsScreen;
@@ -18,98 +19,98 @@ public class ControlPanelSteps {
     ControlPanelScreen ControlPanelScreen = new ControlPanelScreen();
     NewsScreen NewsScreen = new NewsScreen();
 
-    @Step("Получение даты публикации первой новости")
     public String getFirstNewsPublicationDate() {
+        Allure.step("Получение даты публикации первой новости");
         return TextHelpers.getText(ControlPanelScreen.firstPublicationDate);
     }
 
-    @Step("Получение даты создания первой новости")
     public String getFirstNewsCreationDate() {
+        Allure.step("Получение даты создания первой новости");
         return TextHelpers.getText(ControlPanelScreen.firstCreationDate);
     }
 
-    @Step("Получение даты публикации тестовой первой новости")
     public String getFirstNewsPublicationDateAgain() {
+        Allure.step("Получение даты публикации тестовой первой новости");
         return TextHelpers.getText(ControlPanelScreen.firstPublicationDateAgain);
     }
 
-    @Step("Получение даты создания тестовой первой новости")
     public String getFirstNewsCreationDateAgain() {
+        Allure.step("Получение даты создания тестовой первой новости");
         return TextHelpers.getText(ControlPanelScreen.firstCreationDateAgain);
     }
 
-    @Step("Получение даты публикации последней новости")
     public String getLastNewsPublicationDate() {
+        Allure.step("Получение даты публикации последней новости");
         return TextHelpers.getText(ControlPanelScreen.lastPublicationDate);
     }
 
-    @Step("Переход к экрану создания новости")
     public void createNews() {
+        Allure.step("Переход к экрану создания новости");
         ControlPanelScreen.createNewsButton.perform(click());
     }
 
-    @Step("Проверка отображение экрана панели управления")
     public void isControlPanel() {
+        Allure.step("Проверка отображение экрана панели управления");
         NewsScreen.controlPanel.check(matches(isDisplayed()));
     }
 
-    @Step("Проверка даты публикации первой новости")
     public void checkFirstPublicationDate(String text) {
+        Allure.step("Проверка даты публикации первой новости");
         ControlPanelScreen.firstPublicationDate.check(matches(withText(text)));
     }
 
-    @Step("Проверка даты публикации первой не активной новости")
     public void checkFirstPublicationDateNotActive(String text) {
+        Allure.step("Проверка даты публикации первой не активной новости");
         ControlPanelScreen.firstPublicationDateNotActive.check(matches(withText(text)));
     }
 
-    @Step("Проверка даты публикации первой активной новости")
     public void checkFirstPublicationDateActive(String text) {
+        Allure.step("Проверка даты публикации первой активной новости");
         ControlPanelScreen.firstPublicationDateActive.check(matches(withText(text)));
     }
 
-    @Step("Проверка статуса новости")
     public void checkNewsStatus() {
+        Allure.step("Проверка статуса новости");
         ControlPanelScreen.newsStatus.check(matches(withText("Not active")));
     }
 
-    @Step("Проверка статуса активной новости")
     public void checkNewsStatusActive() {
+        Allure.step("Проверка статуса активной новости");
         ControlPanelScreen.newsStatusActive.check(matches(withText("Active")));
     }
 
-    @Step("Открытие окна редактирования новости")
     public void clickEditNews() {
+        Allure.step("Открытие окна редактирования новости");
         ControlPanelScreen.editNewsButton.perform(click());
     }
 
-    @Step("Открытие окна изменения выбранной новости")
     public void clickEditThisNews() {
+        Allure.step("Открытие окна изменения выбранной новости");
         ControlPanelScreen.newsEdit.perform(click());
     }
 
-    @Step("Проверка статуса не активной новости")
     public void checkNewsStatusNotActive() {
+        Allure.step("Проверка статуса не активной новости");
         ControlPanelScreen.buttonEditNewsNotActive.perform(click());
     }
 
-    @Step("Удаление новости")
     public void clickDeleteNews() {
+        Allure.step("Удаление новости");
         ControlPanelScreen.buttonDeleteNews.perform(click());
     }
 
-    @Step("Удаление выбранной новости")
     public void clickDeleteThisNews() {
+        Allure.step("Удаление выбранной новости");
         ControlPanelScreen.newsDelete.perform(click());
     }
 
-    @Step("Нажатие на заголовок")
     public void clickNewsTitle() {
+        Allure.step("Нажатие на заголовок");
         ControlPanelScreen.newsTitle.perform(click());
     }
 
-    @Step("Проверка описания новости")
     public void checkNewsDescription(boolean visible) {
+        Allure.step("Проверка описания новости");
         if (visible) {
             ControlPanelScreen.newsDescription.check(matches(isDisplayed()));
         } else {

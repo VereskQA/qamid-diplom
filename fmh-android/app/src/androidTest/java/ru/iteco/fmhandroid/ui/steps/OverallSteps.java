@@ -4,6 +4,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 
 import android.os.SystemClock;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.OverallElements;
 
@@ -11,40 +12,40 @@ public class OverallSteps {
 
     OverallElements OverallElements = new OverallElements();
 
-    @Step("Кликнуть выйти из приложения")
     public void logout() {
+        Allure.step("Кликнуть выйти из приложения");
         OverallElements.manImage.perform(click());
         OverallElements.exitButton.perform(click());
     }
 
-    @Step("Кликнуть сохранить")
     public void clickSave() {
+        Allure.step("Кликнуть сохранить");
         OverallElements.buttonSave.perform(click());
         SystemClock.sleep(1500);
     }
 
-    @Step("Кликнуть ОК")
     public void clickOK() {
+        Allure.step("Кликнуть ОК");
         OverallElements.buttonOkText.perform(click());
     }
 
-    @Step("Кликнуть отмена")
     public void clickCancel() {
+        Allure.step("Кликнуть отмена");
         OverallElements.buttonCancel.perform(click());
     }
 
-    @Step("Кликнуть отмена для подтверждения")
     public void clickCancelText() {
+        Allure.step("Кликнуть отмена для подтверждения");
         OverallElements.buttonCancelText.perform(click());
     }
 
-    @Step("Перейти в тематические цитаты")
     public void goToThematicQuotes() {
+        Allure.step("Перейти в тематические цитаты");
         OverallElements.thematicQuotes.perform(click());
     }
 
-    @Step("Перейти к нужному экрану через меню")
     public void goToScreen(String screen) {
+        Allure.step("Перейти к нужному экрану через меню");
         OverallElements.mainMenu.perform(click());
         switch (screen) {
             case ("Main"):

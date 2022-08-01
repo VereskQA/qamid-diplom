@@ -9,6 +9,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 
 import android.os.SystemClock;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.ClaimScreen;
 import ru.iteco.fmhandroid.ui.elements.MainScreen;
@@ -18,50 +19,50 @@ public class ClaimsSteps {
     MainScreen MainScreen = new MainScreen();
     ClaimScreen ClaimScreen = new ClaimScreen();
 
-    @Step("Проверка отображения экрана заявок")
     public void isClaimsScreen() {
+        Allure.step("Проверка отображения экрана заявок");
         MainScreen.addNewClaimButton.check(matches(isDisplayed()));
         MainScreen.allNewsLink.check(doesNotExist());
     }
 
-    @Step("Открытие фильтра")
     public void openFiltering() {
+        Allure.step("Открытие фильтра");
         ClaimScreen.claimFilterButton.perform(click());
         ClaimScreen.claimFilterTitle.check(matches(isDisplayed()));
     }
 
-    @Step("Установка чекбокса \"В процессе\"")
     public void clickCheckboxInProgress() {
+        Allure.step("Установка чекбокса \"В процессе\"");
         ClaimScreen.inProgressFilter.perform(click());
     }
 
-    @Step("Установка чекбокса \"Открыт\"")
     public void clickCheckboxOpen() {
+        Allure.step("Установка чекбокса \"Открыт\"");
         ClaimScreen.open.perform(click());
     }
 
-    @Step("Установка чекбокса \"Выполнен\"")
     public void clickCheckboxExecuted() {
+        Allure.step("Установка чекбокса \"Выполнен\"");
         ClaimScreen.executedFilter.perform(click());
     }
 
-    @Step("Установка чекбокса \"Отменен\"")
     public void clickCheckboxCancelled() {
+        Allure.step("Установка чекбокса \"Отменен\"");
         ClaimScreen.cancelledFilter.perform(click());
     }
 
-    @Step("Клик \"Отмена\"")
     public void clickCancel() {
+        Allure.step("Клик \"Отмена\"");
         ClaimScreen.cancelButton.perform(click());
     }
 
-    @Step("Клик \"ОК\"")
     public void clickOK() {
+        Allure.step("Клик \"ОК\"");
         ClaimScreen.okButton.perform(click());
     }
 
-    @Step("Проверка чекбокса \"В процессе\"")
     public void checkCheckboxInProgress(boolean checked) {
+        Allure.step("Проверка чекбокса \"В процессе\"");
         if (checked) {
             ClaimScreen.inProgressFilter.check(matches(isChecked()));
         } else {
@@ -69,8 +70,8 @@ public class ClaimsSteps {
         }
     }
 
-    @Step("Проверка чекбокса \"Открыт\"")
     public void checkCheckboxOpen(boolean checked) {
+        Allure.step("Проверка чекбокса \"Открыт\"");
         if (checked) {
             ClaimScreen.open.check(matches(isChecked()));
         } else {
@@ -78,8 +79,8 @@ public class ClaimsSteps {
         }
     }
 
-    @Step("Проверка чекбокса \"Выполнен\"")
     public void checkCheckboxExecuted(boolean checked) {
+        Allure.step("Проверка чекбокса \"Выполнен\"");
         if (checked) {
             ClaimScreen.executedFilter.check(matches(isChecked()));
         } else {
@@ -87,8 +88,8 @@ public class ClaimsSteps {
         }
     }
 
-    @Step("Проверка чекбокса \"Отменен\"")
     public void checkCheckboxCancelled(boolean checked) {
+        Allure.step("Проверка чекбокса \"Отменен\"");
         if (checked) {
             ClaimScreen.cancelledFilter.check(matches(isChecked()));
         } else {
@@ -96,8 +97,8 @@ public class ClaimsSteps {
         }
     }
 
-    @Step("Клик для создания заявки")
     public void createClaim() {
+        Allure.step("Клик для создания заявки");
         ClaimScreen.addNewClaimButton.perform(click());
         SystemClock.sleep(1500);
     }

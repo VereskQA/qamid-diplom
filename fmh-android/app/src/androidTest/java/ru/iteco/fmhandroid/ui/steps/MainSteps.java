@@ -12,6 +12,7 @@ import android.os.SystemClock;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.MainScreen;
 
@@ -19,76 +20,76 @@ public class MainSteps {
 
     MainScreen MainScreen = new MainScreen();
 
-    @Step("Проверка отображения главного экрана")
     public void isMainScreen() {
+        Allure.step("Проверка отображения главного экрана");
         MainScreen.allNewsLink.check(matches(isDisplayed()));
         MainScreen.newsLabel.check(matches(withText("News")));
     }
 
-    @Step("Разворачивание блока новостей")
     public void expandNews() {
+        Allure.step("Разворачивание блока новостей");
         MainScreen.expandNews.check(matches(isDisplayed()));
         MainScreen.expandNews.perform(click());
     }
 
-    @Step("Разворачивание блока заявок")
     public void expandClaims() {
+        Allure.step("Разворачивание блока заявок");
         MainScreen.expandClaims.check(matches(isDisplayed()));
         MainScreen.expandClaims.perform(click());
     }
 
-    @Step("Проверка скрытия ссылки на все новости")
     public void allNewsNotDisplayed() {
+        Allure.step("Проверка скрытия ссылки на все новости");
         MainScreen.allNewsLink.check(matches(not(isDisplayed())));
     }
 
-    @Step("Проверка видимости ссылки все новости")
     public void allNewsDisplayed() {
+        Allure.step("Проверка видимости ссылки все новости");
         MainScreen.allNewsLink.check(matches(isDisplayed()));
     }
 
-    @Step("Проверка скрытия ссылки на Все заявки")
     public void allClaimsNotDisplayed() {
+        Allure.step("Проверка скрытия ссылки на Все заявки");
         MainScreen.allClaims.check(matches(not(isDisplayed())));
     }
 
-    @Step("Проверка видимости ссылки Все заявки")
     public void allClaimsDisplayed() {
+        Allure.step("Проверка видимости ссылки Все заявки");
         MainScreen.allClaims.check(matches(isDisplayed()));
     }
 
-    @Step("Клик на \"Все новости\"")
     public void openAllNews() {
+        Allure.step("Клик на \"Все новости\"");
         MainScreen.allNewsLink.check(matches(isDisplayed()));
         MainScreen.allNewsLink.perform(click());
     }
 
-    @Step("Клик на \"Все заявки\"")
     public void openAllClaims() {
+        Allure.step("Клик на \"Все заявки\"");
         MainScreen.allClaims.check(matches(isDisplayed()));
         MainScreen.allClaims.perform(click());
     }
 
-    @Step("Разворачивание новости")
     public void expandSingleNews() {
+        Allure.step("Разворачивание новости");
         MainScreen.expandSingleNews.perform(actionOnItemAtPosition(0, click()));
         MainScreen.newsDescription.check(matches(isDisplayed()));
     }
 
-    @Step("Сворачивание новость")
     public void collapseSingleNews() {
+        Allure.step("Сворачивание новость");
         MainScreen.categoryIcon.perform(click());
         MainScreen.newsDescriptionAfterCollapse.check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 
-    @Step("Открытие заявки")
     public void openSingleClaim() {
+        Allure.step("Открытие заявки");
         MainScreen.firstClaimExecutorName.perform(click());
         SystemClock.sleep(2000);
     }
 
-    @Step("Создать заявку")
     public void createClaim() {
+        Allure.step("Создать заявку");
         MainScreen.addNewClaimButton.perform(click());
         SystemClock.sleep(1000);
     }

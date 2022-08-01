@@ -9,6 +9,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.CreateNewsScreen;
 
@@ -16,56 +17,56 @@ public class CreateNewsSteps {
 
     CreateNewsScreen CreateNewsScreen = new CreateNewsScreen();
 
-    @Step("Проверка отображения экрана создания новости")
     public void isCreateNewsScreen() {
+        Allure.step("Проверка отображения экрана создания новости");
         CreateNewsScreen.title.check(matches(withText("Creating")));
         CreateNewsScreen.subTitle.check(matches(withText("News")));
     }
 
-    @Step("Проверка отображения экрана редактирования новости")
     public void isEditNewsScreen() {
+        Allure.step("Проверка отображения экрана редактирования новости");
         CreateNewsScreen.title.check(matches(withText("Editing")));
         CreateNewsScreen.subTitle.check(matches(withText("News")));
     }
 
-    @Step("Выбор категории новости")
     public void selectNewsCategory() {
+        Allure.step("Выбор категории новости");
         CreateNewsScreen.categoryList.perform(click());
         CreateNewsScreen.newsTitle.perform(click());
     }
 
-    @Step("Ввод заголовка")
     public void enterNewsTitle(String text) {
+        Allure.step("Ввод заголовка");
         CreateNewsScreen.newsTitle.perform(replaceText(text), closeSoftKeyboard());
     }
 
-    @Step("Ввод даты публикации")
     public void enterNewsPublicationDate(String text) {
+        Allure.step("Ввод даты публикации");
         CreateNewsScreen.newsDate.perform(replaceText(text));
     }
 
-    @Step("Ввод времени")
     public void enterNewsTime(String text) {
+        Allure.step("Ввод времени");
         CreateNewsScreen.newsTime.perform(replaceText(text));
     }
 
-    @Step("Ввод описания")
     public void enterNewsDescription(String text) {
+        Allure.step("Ввод описания");
         CreateNewsScreen.newsDescription.perform(replaceText(text), closeSoftKeyboard());
     }
 
-    @Step("Проверка заголовка")
     public void checkNewsTitle(String text) {
+        Allure.step("Проверка заголовка");
         CreateNewsScreen.newsTitle.check(matches(withText(text)));
     }
 
-    @Step("Проверка переключателя")
     public void checkNewsSwitcher() {
+        Allure.step("Проверка переключателя");
         CreateNewsScreen.newsSwitcher.check(matches(allOf(withText("Active"), isDisplayed())));
     }
 
-    @Step("Нажатие переключателя")
     public void clickNewsSwitcher() {
+        Allure.step("Нажатие переключателя");
         CreateNewsScreen.newsSwitcher.perform(click());
     }
 }

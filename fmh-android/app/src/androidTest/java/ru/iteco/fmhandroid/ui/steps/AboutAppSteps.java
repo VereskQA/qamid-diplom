@@ -7,6 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.AboutAppScreen;
 
@@ -14,8 +15,8 @@ public class AboutAppSteps {
 
     AboutAppScreen AboutAppScreen = new AboutAppScreen();
 
-    @Step("Полная проверка информационного экрана")
     public void checkEverythingYouWant() {
+        Allure.step("Полная проверка информационного экрана");
         AboutAppScreen.versionTitle.check(matches(allOf(withText("Version:"), isDisplayed())));
         AboutAppScreen.versionValue.check(matches(allOf(withText("1.0.0"), isDisplayed())));
         AboutAppScreen.privacyPolicyValue.check(matches(allOf(withText("https://vhospice.org/#/privacy-policy/"), isDisplayed(), isClickable())));
@@ -24,8 +25,8 @@ public class AboutAppSteps {
         AboutAppScreen.companyLabel.check(matches(allOf(withText("© I-Teco, 2022"), isDisplayed())));
     }
 
-    @Step("Возврат назад")
     public void goBack() {
+        Allure.step("Возврат назад");
         AboutAppScreen.backButton.perform(click());
     }
 }

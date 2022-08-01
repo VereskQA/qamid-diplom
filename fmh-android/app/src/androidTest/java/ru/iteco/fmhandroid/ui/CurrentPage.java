@@ -246,7 +246,7 @@ public class CurrentPage {
         String lastNews = NewsSteps.getLastNewsTitle();
         NewsSteps.clickSortButton();
         String firstNewsAgain = NewsSteps.getFirstNewsAgainTitle();
-        assertEquals(firstNews, firstNewsAgain);
+        assertNotEquals(firstNews, firstNewsAgain);
         assertEquals(firstNews, lastNews);
     }
 

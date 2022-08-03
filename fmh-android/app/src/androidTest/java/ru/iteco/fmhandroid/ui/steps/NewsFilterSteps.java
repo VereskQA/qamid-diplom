@@ -5,9 +5,9 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.NewsFilterScreen;
 
 public class NewsFilterSteps {
@@ -19,9 +19,19 @@ public class NewsFilterSteps {
         NewsFilterScreen.publishDateStart.perform(replaceText(text));
     }
 
+    public void checkEnterPublishDateStart(String text) {
+        Allure.step("Проверка ввода начальной даты публикации");
+        NewsFilterScreen.publishDateStart.check(matches(withText(text)));
+    }
+
     public void enterPublishDateEnd(String text) {
         Allure.step("Ввод конечной даты публикации");
         NewsFilterScreen.publishDateEnd.perform(replaceText(text));
+    }
+
+    public void checkEnterPublishDateEnd(String text) {
+        Allure.step("Проверка ввода конечной даты публикации");
+        NewsFilterScreen.publishDateEnd.check(matches(withText(text)));
     }
 
     public void clickFilter() {

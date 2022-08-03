@@ -342,7 +342,9 @@ public class CurrentPage {
 
         NewsSteps.openFilter();
         NewsFilterSteps.enterPublishDateStart(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateStart(newsPublicationDate);
         NewsFilterSteps.enterPublishDateEnd(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateEnd(newsPublicationDate);
         NewsFilterSteps.clickFilter();
 
         NewsSteps.checkFirstNewsDate(newsPublicationDate);
@@ -352,7 +354,9 @@ public class CurrentPage {
 
         NewsSteps.openFilter();
         NewsFilterSteps.enterPublishDateStart(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateStart(newsPublicationDate);
         NewsFilterSteps.enterPublishDateEnd(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateEnd(newsPublicationDate);
         NewsFilterSteps.clickFilter();
 
         ControlPanelSteps.checkFirstPublicationDate(newsPublicationDate);
@@ -363,7 +367,9 @@ public class CurrentPage {
 
         NewsSteps.openFilter();
         NewsFilterSteps.enterPublishDateStart(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateStart(newsPublicationDate);
         NewsFilterSteps.enterPublishDateEnd(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateEnd(newsPublicationDate);
         NewsFilterSteps.clickCheckboxActive();
         NewsFilterSteps.checkCheckboxActive(false);
         NewsFilterSteps.checkCheckboxNotActive(true);
@@ -378,7 +384,9 @@ public class CurrentPage {
 
         NewsSteps.openFilter();
         NewsFilterSteps.enterPublishDateStart(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateStart(newsPublicationDate);
         NewsFilterSteps.enterPublishDateEnd(newsPublicationDate);
+        NewsFilterSteps.checkEnterPublishDateEnd(newsPublicationDate);
         NewsFilterSteps.checkCheckboxActive(true);
         NewsFilterSteps.clickCheckboxNotActive();
         NewsFilterSteps.checkCheckboxNotActive(false);

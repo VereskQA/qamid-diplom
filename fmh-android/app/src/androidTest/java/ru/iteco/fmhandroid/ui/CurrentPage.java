@@ -301,8 +301,11 @@ public class CurrentPage {
         CreateNewsSteps.selectNewsCategory();
         CreateNewsSteps.enterNewsTitle(newsTitleString);
         CreateNewsSteps.enterNewsPublicationDate(newsPublicationDate);
+        CreateNewsSteps.checkEnterNewsPublicationDate(newsPublicationDate);
         CreateNewsSteps.enterNewsTime(newsTime);
+        CreateNewsSteps.checkEnterNewsTime(newsTime);
         CreateNewsSteps.enterNewsDescription(newsDescriptionString);
+        CreateNewsSteps.checkEnterNewsDescription(newsDescriptionString);
         CreateNewsSteps.checkNewsSwitcher();
 
         OverallSteps.clickSave();
@@ -330,8 +333,11 @@ public class CurrentPage {
         CreateNewsSteps.selectNewsCategory();
         CreateNewsSteps.enterNewsTitle(newsTitleString);
         CreateNewsSteps.enterNewsPublicationDate(newsPublicationDate);
+        CreateNewsSteps.checkEnterNewsPublicationDate(newsPublicationDate);
         CreateNewsSteps.enterNewsTime(newsTime);
+        CreateNewsSteps.checkEnterNewsTime(newsTime);
         CreateNewsSteps.enterNewsDescription(newsDescriptionString);
+        CreateNewsSteps.checkEnterNewsDescription(newsDescriptionString);
         CreateNewsSteps.checkNewsSwitcher();
 
         OverallSteps.clickSave();
@@ -413,8 +419,11 @@ public class CurrentPage {
         CreateNewsSteps.selectNewsCategory();
         CreateNewsSteps.enterNewsTitle(newsTitleString);
         CreateNewsSteps.enterNewsPublicationDate(newsPublicationDate);
+        CreateNewsSteps.checkEnterNewsPublicationDate(newsPublicationDate);
         CreateNewsSteps.enterNewsTime(newsTime);
+        CreateNewsSteps.checkEnterNewsTime(newsTime);
         CreateNewsSteps.enterNewsDescription(newsDescriptionString);
+        CreateNewsSteps.checkEnterNewsDescription(newsDescriptionString);
         CreateNewsSteps.checkNewsSwitcher();
 
         OverallSteps.clickSave();

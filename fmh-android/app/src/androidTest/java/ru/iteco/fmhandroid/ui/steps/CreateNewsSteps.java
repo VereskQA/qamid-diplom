@@ -10,7 +10,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.CreateNewsScreen;
 
 public class CreateNewsSteps {
@@ -45,14 +44,29 @@ public class CreateNewsSteps {
         CreateNewsScreen.newsDate.perform(replaceText(text));
     }
 
+    public void checkEnterNewsPublicationDate(String text) {
+        Allure.step("Проверка ввода даты публикации");
+        CreateNewsScreen.newsDate.check(matches(withText(text)));
+    }
+
     public void enterNewsTime(String text) {
         Allure.step("Ввод времени");
         CreateNewsScreen.newsTime.perform(replaceText(text));
     }
 
+    public void checkEnterNewsTime(String text) {
+        Allure.step("Проверка ввода времени");
+        CreateNewsScreen.newsTime.check(matches(withText(text)));
+    }
+
     public void enterNewsDescription(String text) {
         Allure.step("Ввод описания");
         CreateNewsScreen.newsDescription.perform(replaceText(text), closeSoftKeyboard());
+    }
+
+    public void checkEnterNewsDescription(String text) {
+        Allure.step("Проверка ввода описания");
+        CreateNewsScreen.newsDescription.check(matches(withText(text)));
     }
 
     public void checkNewsTitle(String text) {

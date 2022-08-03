@@ -60,7 +60,9 @@ public class AuthorizationPage {
     public void signInFail() {
         AuthorizationSteps.isAuthorizationScreen();
         AuthorizationSteps.enterLogin("login");
+        AuthorizationSteps.checkEnterLogin("login");
         AuthorizationSteps.enterPassword("pass");
+        AuthorizationSteps.checkEnterPassword("pass");
         AuthorizationSteps.clickSignInButton();
         onView(withText(R.string.wrong_login_or_password))
                 .inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow()
@@ -72,7 +74,9 @@ public class AuthorizationPage {
     public void signInSuccess() {
         AuthorizationSteps.isAuthorizationScreen();
         AuthorizationSteps.enterLogin("login2");
+        AuthorizationSteps.checkEnterLogin("login2");
         AuthorizationSteps.enterPassword("password2");
+        AuthorizationSteps.checkEnterPassword("password2");
         AuthorizationSteps.clickSignInButton();
         SystemClock.sleep(2500);
         MainSteps.isMainScreen();

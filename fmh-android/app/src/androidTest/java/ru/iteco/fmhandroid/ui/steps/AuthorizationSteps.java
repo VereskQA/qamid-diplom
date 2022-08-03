@@ -6,9 +6,9 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.AuthorizationScreen;
 
 public class AuthorizationSteps {
@@ -26,10 +26,22 @@ public class AuthorizationSteps {
         AuthorizationScreen.loginInput.perform(replaceText(text));
     }
 
+    public void checkEnterLogin(String text) {
+        Allure.step("Проверка ввода логина");
+        AuthorizationScreen.loginInput.check(matches(isEnabled()));
+        AuthorizationScreen.loginInput.check(matches(withText(text)));
+    }
+
     public void enterPassword(String text) {
         Allure.step("Ввод пароля");
         AuthorizationScreen.passwordInput.check(matches(isEnabled()));
         AuthorizationScreen.passwordInput.perform(replaceText(text));
+    }
+
+    public void checkEnterPassword(String text) {
+        Allure.step("Ввод пароля");
+        AuthorizationScreen.passwordInput.check(matches(isEnabled()));
+        AuthorizationScreen.passwordInput.check(matches(withText(text)));
     }
 
     public void clickSignInButton() {

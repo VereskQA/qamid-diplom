@@ -152,8 +152,11 @@ public class CurrentPage {
         CreateClaimSteps.checkEnterClaimTitle(claimTitleString);
         CreateClaimSteps.selectExecutor();
         CreateClaimSteps.enterClaimDate(currentDate);
+        CreateClaimSteps.checkEnterClaimDate(currentDate);
         CreateClaimSteps.enterClaimTime(currentTime);
+        CreateClaimSteps.checkEnterClaimTime(currentTime);
         CreateClaimSteps.enterClaimDescription(newClaimTitleString);
+        CreateClaimSteps.checkEnterClaimDescription(newClaimTitleString);
 
         OverallSteps.clickCancel();
         OverallSteps.clickCancelText();

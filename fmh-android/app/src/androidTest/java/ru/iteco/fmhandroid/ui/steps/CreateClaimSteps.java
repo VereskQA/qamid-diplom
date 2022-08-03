@@ -10,7 +10,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import android.os.SystemClock;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.CreateClaimScreen;
 
 public class CreateClaimSteps {
@@ -35,9 +34,15 @@ public class CreateClaimSteps {
     }
 
     public void enterClaimTitle(String text) {
-        Allure.step("Ввод заголововка");
+        Allure.step("Ввод заголовка");
         CreateClaimScreen.claimTitle.check(matches(isDisplayed()));
         CreateClaimScreen.claimTitle.perform(replaceText(text));
+    }
+
+    public void checkEnterClaimTitle(String text) {
+        Allure.step("Проверка ввода заголовка");
+        CreateClaimScreen.claimTitle.check(matches(isDisplayed()));
+        CreateClaimScreen.claimTitle.check(matches(withText(text)));
     }
 
     public void selectExecutor() {
@@ -53,15 +58,33 @@ public class CreateClaimSteps {
         CreateClaimScreen.claimDate.perform(replaceText(text));
     }
 
+    public void checkEnterClaimDate(String text) {
+        Allure.step("Проверка ввода даты");
+        CreateClaimScreen.claimDate.check(matches(isDisplayed()));
+        CreateClaimScreen.claimDate.check(matches(withText(text)));
+    }
+
     public void enterClaimTime(String text) {
         Allure.step("Ввод времени");
         CreateClaimScreen.claimTime.check(matches(isDisplayed()));
         CreateClaimScreen.claimTime.perform(replaceText(text));
     }
 
+    public void checkEnterClaimTime(String text) {
+        Allure.step("Проверка ввода времени");
+        CreateClaimScreen.claimTime.check(matches(isDisplayed()));
+        CreateClaimScreen.claimTime.check(matches(withText(text)));
+    }
+
     public void enterClaimDescription(String text) {
         Allure.step("Ввод описания");
         CreateClaimScreen.claimDescription.check(matches(isDisplayed()));
         CreateClaimScreen.claimDescription.perform(replaceText(text), closeSoftKeyboard());
+    }
+
+    public void checkEnterClaimDescription(String text) {
+        Allure.step("Проверка ввода описания");
+        CreateClaimScreen.claimDescription.check(matches(isDisplayed()));
+        CreateClaimScreen.claimDescription.check(matches(withText(text)));
     }
 }

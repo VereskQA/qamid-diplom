@@ -149,6 +149,7 @@ public class CurrentPage {
         OverallSteps.clickOK();
 
         CreateClaimSteps.enterClaimTitle(claimTitleString);
+        CreateClaimSteps.checkEnterClaimTitle(claimTitleString);
         CreateClaimSteps.selectExecutor();
         CreateClaimSteps.enterClaimDate(currentDate);
         CreateClaimSteps.enterClaimTime(currentTime);
@@ -166,6 +167,7 @@ public class CurrentPage {
         MainSteps.createClaim();
         CreateClaimSteps.isCreateClaimsScreen();
         CreateClaimSteps.enterClaimTitle(claimTitleString);
+        CreateClaimSteps.checkEnterClaimTitle(claimTitleString);
         CreateClaimSteps.selectExecutor();
         CreateClaimSteps.enterClaimDate(currentDate);
         CreateClaimSteps.enterClaimTime(currentTime);

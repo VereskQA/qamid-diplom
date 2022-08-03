@@ -9,7 +9,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import androidx.test.espresso.matcher.ViewMatchers;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.ControlPanelScreen;
 import ru.iteco.fmhandroid.ui.elements.NewsScreen;
 import ru.iteco.fmhandroid.ui.helpers.MainHelper.TextHelpers;

@@ -5,7 +5,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import android.os.SystemClock;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.OverallElements;
 
 public class OverallSteps {

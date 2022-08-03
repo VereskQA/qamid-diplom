@@ -13,7 +13,6 @@ import android.os.SystemClock;
 import androidx.test.espresso.matcher.ViewMatchers;
 
 import io.qameta.allure.kotlin.Allure;
-import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.elements.MainScreen;
 
 public class MainSteps {

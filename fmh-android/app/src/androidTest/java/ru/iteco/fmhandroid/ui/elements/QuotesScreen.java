@@ -1,7 +1,11 @@
 package ru.iteco.fmhandroid.ui.elements;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 import static ru.iteco.fmhandroid.ui.helpers.MainHelper.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
@@ -16,5 +20,5 @@ public class QuotesScreen {
     public ViewInteraction quoteTitleClickable = onView(withIndex(withId(R.id.our_mission_item_title_text_view), 0));
     public ViewInteraction quoteTitleClickable2 = onView(withIndex(withId(R.id.our_mission_item_title_text_view), 0));
     public ViewInteraction quoteDescription = onView(withIndex(withId(R.id.our_mission_item_description_text_view), 0));
-    public ViewInteraction quoteDescriptionAfterClick = onView(withIndex(withId(R.id.our_mission_item_description_text_view), 0));
+    public ViewInteraction quoteDescriptionAfterClick = onView(allOf(withId(R.id.our_mission_item_description_text_view), withParent(withParent(withId(R.id.our_mission_item_material_card_view))), isDisplayed()));
 }

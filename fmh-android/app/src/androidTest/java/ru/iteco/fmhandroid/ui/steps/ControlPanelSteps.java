@@ -3,10 +3,8 @@ package ru.iteco.fmhandroid.ui.steps;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-import androidx.test.espresso.matcher.ViewMatchers;
 
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.elements.ControlPanelScreen;
@@ -101,19 +99,5 @@ public class ControlPanelSteps {
     public void clickDeleteThisNews() {
         Allure.step("Удаление выбранной новости");
         ControlPanelScreen.newsDelete.perform(click());
-    }
-
-    public void clickNewsTitle() {
-        Allure.step("Нажатие на заголовок");
-        ControlPanelScreen.newsTitle.perform(click());
-    }
-
-    public void checkNewsDescription(boolean visible) {
-        Allure.step("Проверка описания новости");
-        if (visible) {
-            ControlPanelScreen.newsDescription.check(matches(isDisplayed()));
-        } else {
-            ControlPanelScreen.newsDescription.check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-        }
     }
 }

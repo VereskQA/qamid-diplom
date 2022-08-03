@@ -232,7 +232,7 @@ public class MainHelper {
         //Примечание проверяющему
         //В связи с быстрорастущей базой заявок мною принято решение использовать хардкоженную,
         //прошедшую дату для упрощения поиска тестовых заявок и новостей.
-        return "01.01.2021";
+        return "01.01.2012";
 
         //Date currentDate = new Date();
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());

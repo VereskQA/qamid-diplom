@@ -64,6 +64,7 @@ public class CurrentPage {
     QuotesSteps QuotesSteps = new QuotesSteps();
 
     public static String newsTitleString = "Тестовый тайтл " + getTestCurrentDate() + "В" + getCurrentTime();
+    public static String newsTitleForEditing = "Тестовый заголовок " + getTestCurrentDate() + "В" + getCurrentTime();
     public static String newsDescriptionString = "Тестовое описание " + getTestCurrentDate() + "В" + getCurrentTime();
     public static String newNewsTitle = "Произошло что-то непонятное " + getTestCurrentDate() + "В" + getCurrentTime();
     String newsPublicationDate = getTestCurrentDate();
@@ -250,9 +251,9 @@ public class CurrentPage {
         NewsSteps.clickSortButton();
         String lastNews = NewsSteps.getLastNewsTitle();
         NewsSteps.clickSortButton();
-        String firstNewsAgain = NewsSteps.getFirstNewsAgainTitle();
-        assertNotEquals(firstNews, firstNewsAgain);
+        String lastNewsAgain = NewsSteps.getLastNewsAgainTitle();
         assertEquals(firstNews, lastNews);
+        assertNotEquals(firstNews, lastNewsAgain);
     }
 
     @Test
@@ -417,7 +418,7 @@ public class CurrentPage {
         ControlPanelSteps.createNews();
         CreateNewsSteps.isCreateNewsScreen();
         CreateNewsSteps.selectNewsCategory();
-        CreateNewsSteps.enterNewsTitle(newsTitleString);
+        CreateNewsSteps.enterNewsTitle(newsTitleForEditing);
         CreateNewsSteps.enterNewsPublicationDate(newsPublicationDate);
         CreateNewsSteps.checkEnterNewsPublicationDate(newsPublicationDate);
         CreateNewsSteps.enterNewsTime(newsTime);
@@ -429,26 +430,21 @@ public class CurrentPage {
         OverallSteps.clickSave();
         ControlPanelSteps.isControlPanel();
 
-        if (isDisplayedWithSwipe(onView(withText(newsTitleString)), 1, true)) {
-            onView(withText(newsTitleString)).check(matches(isDisplayed())).perform(click());
+        if (isDisplayedWithSwipe(onView(withText(newsTitleForEditing)), 1, true)) {
+            onView(withText(newsTitleForEditing)).check(matches(isDisplayed())).perform(click());
         }
-
-        ControlPanelSteps.checkNewsDescription(true);
-        ControlPanelSteps.clickNewsTitle();
-        SystemClock.sleep(1500);
-        ControlPanelSteps.checkNewsDescription(false);
-
+        SystemClock.sleep(1000);
         ControlPanelSteps.clickEditThisNews();
         CreateNewsSteps.isEditNewsScreen();
-        CreateNewsSteps.checkNewsTitle(newsTitleString);
+        CreateNewsSteps.checkNewsTitle(newsTitleForEditing);
         CreateNewsSteps.enterNewsTitle(newNewsTitle);
         OverallSteps.clickSave();
 
         ControlPanelSteps.isControlPanel();
         if (isDisplayedWithSwipe(onView(withText(newNewsTitle)), 1, true)) {
-            onView(withText(newNewsTitle)).check(matches(isDisplayed()));
+            onView(withText(newNewsTitle)).check(matches(isDisplayed())).perform(click());
         }
-
+        SystemClock.sleep(1000);
         ControlPanelSteps.clickDeleteThisNews();
         OverallSteps.clickOK();
         SystemClock.sleep(1500);

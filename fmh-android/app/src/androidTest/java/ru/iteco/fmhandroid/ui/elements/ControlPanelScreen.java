@@ -7,8 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static ru.iteco.fmhandroid.ui.CurrentPage.newNewsTitle;
-import static ru.iteco.fmhandroid.ui.CurrentPage.newsDescriptionString;
-import static ru.iteco.fmhandroid.ui.CurrentPage.newsTitleString;
+import static ru.iteco.fmhandroid.ui.CurrentPage.newsTitleForEditing;
 import static ru.iteco.fmhandroid.ui.helpers.MainHelper.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
@@ -30,8 +29,8 @@ public class ControlPanelScreen {
     public ViewInteraction firstPublicationDateNotActive = onView(withIndex(withId(R.id.news_item_publication_date_text_view), 0));
     public ViewInteraction firstPublicationDateActive = onView(withIndex(withId(R.id.news_item_publication_date_text_view), 0));
     public ViewInteraction buttonEditNewsNotActive = onView(withIndex(withId(R.id.edit_news_item_image_view), 0));
-    public ViewInteraction newsDescription = onView(withText(newsDescriptionString));
-    public ViewInteraction newsEdit = onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitleString))))))));
+    //public ViewInteraction newsDescription = onView(withText(newsDescriptionString));
+    public ViewInteraction newsEdit = onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newsTitleForEditing))))))));
     public ViewInteraction newsDelete = onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(newNewsTitle))))))));
-    public ViewInteraction newsTitle = onView(withText(newsTitleString));
+    //public ViewInteraction newsTitle = onView(withText(newsTitleString));
 }

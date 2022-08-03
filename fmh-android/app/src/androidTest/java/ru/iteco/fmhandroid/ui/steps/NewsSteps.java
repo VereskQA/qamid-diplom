@@ -54,4 +54,9 @@ public class NewsSteps {
         Allure.step("Проверка даты первой новости");
         NewsScreen.firstNewsDate.check(matches(withText(text)));
     }
+
+    public String getLastNewsAgainTitle() {
+        Allure.step("Получение названия новой последней новости");
+        return MainHelper.TextHelpers.getText(NewsScreen.lastNewsAgain);
+    }
 }

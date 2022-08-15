@@ -75,7 +75,7 @@ public class CurrentPage {
 
     @Before
     public void loginCheck() {
-        SystemClock.sleep(6000);
+        SystemClock.sleep(8000);
         try {
             AuthorizationSteps.isAuthorizationScreen();
         } catch (NoMatchingViewException e) {

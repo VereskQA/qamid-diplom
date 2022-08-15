@@ -30,13 +30,14 @@ public class QuotesSteps {
     public void expandQuote() {
         Allure.step("Развернуть цитату");
         QuotesScreen.quoteTitleClickable.perform(click());
+        SystemClock.sleep(2000);
         QuotesScreen.quoteDescription.check(matches(isDisplayed()));
     }
 
     public void collapseQuote() {
         Allure.step("Свернуть цитату");
         QuotesScreen.quoteTitleClickable2.perform(click());
-        SystemClock.sleep(1000);
+        SystemClock.sleep(2000);
         QuotesScreen.quoteDescriptionAfterClick.check(doesNotExist());
     }
 }

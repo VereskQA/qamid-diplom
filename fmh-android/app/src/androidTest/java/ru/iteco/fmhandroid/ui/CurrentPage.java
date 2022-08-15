@@ -3,6 +3,9 @@ package ru.iteco.fmhandroid.ui;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasData;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
@@ -18,9 +21,12 @@ import static ru.iteco.fmhandroid.ui.helpers.MainHelper.getTestCurrentDate;
 import static ru.iteco.fmhandroid.ui.helpers.MainHelper.getCurrentTime;
 import static ru.iteco.fmhandroid.ui.helpers.MainHelper.isDisplayedWithSwipe;
 
+import android.content.Intent;
 import android.os.SystemClock;
 
 import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
@@ -469,5 +475,27 @@ public class CurrentPage {
         QuotesSteps.checkAll();
         QuotesSteps.expandQuote();
         QuotesSteps.collapseQuote();
+    }
+
+    @Test
+    @DisplayName("Проверка открытия ссылки на политику конфиденциальности")
+    public void privacyPolicyLink() {
+        OverallSteps.goToScreen("About");
+        Intents.init();
+        AboutAppSteps.goToPrivacyPolicy();
+        intended(hasData("https://vhospice.org/#/privacy-policy/"));
+        intended(hasAction(Intent.ACTION_VIEW));
+        Intents.release();
+    }
+
+    @Test
+    @DisplayName("Проверка открытия ссылки на правила пользования")
+    public void termsOfUseLink() {
+        OverallSteps.goToScreen("About");
+        Intents.init();
+        AboutAppSteps.goToTermsOfUse();
+        intended(hasData("https://vhospice.org/#/terms-of-use"));
+        intended(hasAction(Intent.ACTION_VIEW));
+        Intents.release();
     }
 }

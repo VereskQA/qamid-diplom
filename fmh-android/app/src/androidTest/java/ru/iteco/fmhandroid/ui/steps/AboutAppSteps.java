@@ -28,4 +28,14 @@ public class AboutAppSteps {
         Allure.step("Возврат назад");
         AboutAppScreen.backButton.perform(click());
     }
+
+    public void goToPrivacyPolicy() {
+        Allure.step("Переход по сслыке на политику конфиденциальности");
+        AboutAppScreen.privacyPolicyValue.perform(click());
+    }
+
+    public void goToTermsOfUse() {
+        Allure.step("Переход по сслыке на правила пользования");
+        AboutAppScreen.termsValue.perform(click());
+    }
 }
